@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign up</title>
+<style>
+/*input{
+color:blue;
+border-radius:4px;
+border:2px solid rgb(93, 185, 213);
+}*/
+table,th,td{
+   border-collapse: collapse;
+}
+#button{
+color:red;
+border-radius: 25px;
+font-style: oblique;
+}
+#h2{
+   color:brown;
+
+}
+#button:hover{
+background-color: burlywood;
+}
+body{
+   /* background-color: whitesmoke;
+   opacity: .7; */
+   background: url('Sarojini/SarojiniBack.jpeg');
+
+}
+fieldset{
+   width: 100%;
+   margin-top: 0;
+}
+
+#login{
+   border: transparent;
+   cursor: pointer;
+   font-style: oblique;
+   font-weight: bold;
+   text-decoration: underline;
+}
+::placeholder{
+   color: red;
+   /* background-color: antiquewhite; */
+}
+input[type="text"]{
+   border: 2px solid black;
+   border-radius: 6px;
+   /* color: red; */
+}
+input[type="password"]{
+   border: 2px solid black;
+   border-radius: 6px;
+   /* color: red; */
+}
+input[type="email"]{
+   border: 2px solid black;
+   border-radius: 6px;
+   /* color: red; */
+}
+</style>
+</head>
+<body>
+   <fieldset style="background-color: white; opacity: 0.7; border: transparent;">
+<!-- <legend>Basic Form</legend> -->
+<form action="#" autocomplete="off" onsubmit="return check(),validate()" >
+<h2 id="h2"><center>To create an account</center></h2>
+<table cellspacing="10" cellpadding="10" align="center">
+<tr><td>
+   <label for="user">Name: </label></td><td>
+   <input type="text" id="user" placeholder="Enter Your Username" style="color: black">
+<br><span id="user1"></span>
+</td></tr>
+<tr><td>
+   <label for="password">Password: </label></td><td>
+   <input type="password" id="password" placeholder="Enter Your Password">
+<span id="pass1"></span>
+</td></tr>
+<tr><td>
+   <label for="conpass">Confirm Password: </label></td><td>
+   <input type="password" id="conpass" placeholder="Confirm Password">
+<span id="pass2"></span>
+</td></tr>
+<tr><td>
+   <label for="email">Email: </label></td><td>
+   <input type="email" id="email" placeholder="Enter Your Email-id" >
+<span id="email1"></span>
+</td></tr>
+<tr><td>
+   <label for="mobile">Mobile No. : </label></td><td>
+   <input type="text" id="mobile" placeholder="Enter Your Mobile Number">
+<span id="mobile1"></span>
+</td></tr>
+<tr><td colspan="2"><input type="submit" id="button" value="Create"></td></tr>
+<tr id="tr"><td>
+   already having an account ?
+   <button id="login" onclick="window.location.href='login.html'" type="button">log.in</button>
+   </td>
+</td></tr>
+</table>
+</form>
+
+</fieldset>
+<script>
+function check()
+{
+var a=document.getElementById('user').value;
+if(a=="")
+{
+document.getElementById('user1').innerHTML="It should not be left empty";
+}
+if(!isNaN(a)){
+    document.getElementById('user1').innerHTML="It should not be number";
+}
+
+if(a.length<5)
+{
+document.getElementById('user1').innerHTML="It should not be less than 5";
+}
+
+}
+function validate()
+{
+    var b=document.getElementById('mobile').value;
+    if(isNaN(b))
+    {
+        document.getElementById('mobile1').innerHTML="It should be a number";
+        return false;
+    }
+    //var c = /^(?=.[0-9])(?=.[!@#$%\^&])[a-zA-Z0-9!@#$%^&]{7-15}$/;
+    var d = "(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}";
+    var pw=document.getElementById('password').value;
+    if(pw == "") {  
+     document.getElementById("pass1").innerHTML = "**Fill the password please!";  
+     return false;  
+  }  
+   
+   
+  if(pw.length < 8) {  
+     document.getElementById("pass1").innerHTML = "**Password length must be atleast 8 characters";  
+     return false;  
+  }  
+  
+  
+  if(pw.length > 15) {  
+     document.getElementById("pass1").innerHTML = "**Password length must not exceed 15 characters";  
+     return false;  
+  }
+//   if(pw1=d){
+//    document.getElementById("pass1").innerHTML="**Password must contain combination of Numbers and Characters";
+//    return false;
+//   }
+
+
+  var pw2=document.getElementById('conpass').value;
+            var d = "(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}";
+            if(pw2 == "") {  
+                document.getElementById("pass2").innerHTML = "**Fill the password please!";  
+                return false;  
+            }  
+            if(pw2!=pw){
+                document.getElementById("pass2").innerHTML="**Password not matched";
+            }
+  
+  else {  
+     alert("Account Created!!");  
+  }  
+}  
+
+</script>
+</body>
+</html>
